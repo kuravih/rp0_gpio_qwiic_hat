@@ -1,6 +1,12 @@
 # Raspberry Pi qwiic hat
 
-Raspberry pi GPIO pins can can be configured as i<sup>2</sup>c as described [here](1). There are 28 GPIO pins which can be configured as 14 i<sup>2</sup>c buses in total. This hat wires these 14 i<sup>2</sup>c busses including the [5 V rail](3) and the ground to 14 [qwiic](2) connectors. Add the following to the `[all]` section of the `/boot/firmware/config.txt` file to enable the i<sup>2</sup>c busses. The i<sup>2</sup>c devices will be available at `dev/i2c-n` (where n will be the bus number used in the dtoverlay)
+Raspberry pi GPIO pins can can be configured as i<sup>2</sup>c as described [here][1].
+There are 28 GPIO pins which can be configured as 14 i<sup>2</sup>c buses in total.
+This hat wires these 14 i<sup>2</sup>c busses including the [5 V rail][3] and the ground to 14 [qwiic][2] connectors.
+Add the following to the `[all]` section of the `/boot/firmware/config.txt` file to enable the i<sup>2</sup>c busses.
+The i<sup>2</sup>c devices will be available at `dev/i2c-n` (where n will be the bus number used in the dtoverlay).
+This setup along with ~100 [ds28ea00_sensorlets][4] were flown on PICTURE-C flight in 2025 to continuously monitor the instrument temperature at numerous locations.
+
 
     dtoverlay=i2c-gpio,i2c_gpio_sda=27,i2c_gpio_scl=18,bus=10
     dtoverlay=i2c-gpio,i2c_gpio_sda=25,i2c_gpio_scl=9,bus=11
@@ -16,7 +22,6 @@ Raspberry pi GPIO pins can can be configured as i<sup>2</sup>c as described [her
     dtoverlay=i2c-gpio,i2c_gpio_sda=7,i2c_gpio_scl=8,bus=21
     dtoverlay=i2c-gpio,i2c_gpio_sda=20,i2c_gpio_scl=21,bus=22
     dtoverlay=i2c-gpio,i2c_gpio_sda=16,i2c_gpio_scl=13,bus=23
-
 
 
 ## Schematic
@@ -43,3 +48,4 @@ Raspberry pi GPIO pins can can be configured as i<sup>2</sup>c as described [her
 [1]: https://forums.raspberrypi.com/viewtopic.php?t=205576
 [2]: https://www.sparkfun.com/qwiic
 [3]: https://pinout.xyz/pinout/5v_power 
+[4]: https://github.com/kuravih/ds28ea00_sensorlet
